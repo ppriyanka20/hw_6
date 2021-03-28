@@ -154,14 +154,14 @@ def make_request_with_cache(baseurl, hashtag, count):
         the results of the query as a dictionary loaded from cache
         JSON
     '''
-    #TODO Implement function
+    
     params = {'q': hashtag, 'count': count}
     request_key = construct_unique_key(baseurl, params)
     if request_key in CACHE_DICT.keys(): #if request was already made
-        print("cache hit!", request_key)
+        #print("cache hit!", request_key)
         return CACHE_DICT[request_key]
     else: #else, if it is a new request
-        print("cache miss!", request_key)
+        #print("cache miss!", request_key)
         CACHE_DICT[request_key] = make_request(baseurl, params)
         save_cache(CACHE_DICT) #write to cache dict file
         return CACHE_DICT[request_key]
